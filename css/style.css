@@ -1,4 +1,4 @@
-/* Variables de couleurs */
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 *,
 *::before,
 *::after {
@@ -133,6 +133,11 @@ tbody td:hover:before {
   bottom: -9999px;
   background-color: rgba(239, 170, 206, 0.8);
   z-index: -1;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
 }
 
 /*# sourceMappingURL=style.css.map */
