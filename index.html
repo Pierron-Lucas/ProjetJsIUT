@@ -11,43 +11,29 @@
         <title>Document</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="https://placeholder.pics/svg/150x50/888888/EEE/Logo" alt="..." height="36">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Accueil</a>
-                        </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Documentation
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Equipe et role</a></li>
-                                <li><a class="dropdown-item" href="#">Outils et Organisation</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Problèmes</a></li>
-                            </ul>
-                        </li>
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__listlogo">
+                <svg viewBox="0 0 640 512" width="100" title="infinity">
+                    <path d="M471.1 96C405 96 353.3 137.3 320 174.6 286.7 137.3 235 96 168.9 96 75.8 96 0 167.8 0 256s75.8 160 168.9 160c66.1 0 117.8-41.3 151.1-78.6 33.3 37.3 85 78.6 151.1 78.6 93.1 0 168.9-71.8 168.9-160S564.2 96 471.1 96zM168.9 320c-40.2 0-72.9-28.7-72.9-64s32.7-64 72.9-64c38.2 0 73.4 36.1 94 64-20.4 27.6-55.9 64-94 64zm302.2 0c-38.2 0-73.4-36.1-94-64 20.4-27.6 55.9-64 94-64 40.2 0 72.9 28.7 72.9 64s-32.7 64-72.9 64z" />
+                </svg>
+            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+            <li class="nav__listitem">Accueil</li>
+            <li class="nav__listitem">Documentation
+                <ul class="nav__listitemdrop">
+                    <li>Equipe & rôle</li>
+                    <li>Outils & Organisation</li>
+                    <li>Problèmes</li>
+                </ul>
+            </li>
+            <li class="nav__listitem">Contact</li>
+        </ul>
+    </nav>
 
-        <footer class="page-footer font-small unique-color-dark pt-4">
+
+        <!--<footer class="page-footer font-small unique-color-dark pt-4">
             <div class="container">
                 <ul class="list-unstyled list-inline text-center py-2">
                     <li class="list-inline-item">
@@ -58,7 +44,7 @@
             <div class="footer-copyright text-center py-3">© 2021 - 2022 Copyright:
                 <a href="#">Test</a>
             </div>
-        </footer>
+        </footer> -->
         <script src="js/main.js"></script>
     </body>
 </html>
