@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 
-* {
-    margin: 0;
-    padding: 0;
-}
-
-
 body {
     background-color: #eee;
     font-family: "Poppins", sans-serif;
@@ -13,13 +7,11 @@ body {
 
 .grid {
     display: grid;
-    width: 100%;
-    min-height: 100vh;
+    min-height: 75vh;
     justify-content: center;
     align-items: center;
     grid-gap: 6rem;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-
 }
 
 .grid-item {
@@ -75,6 +67,7 @@ body {
     transition: 0.2s;
     cursor: pointer;
     letter-spacing: 0.1rem;
+    text-decoration: none;
 }
 
 .card-btn span {

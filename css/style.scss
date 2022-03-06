@@ -23,13 +23,10 @@ $radius: 0.2rem;
 
 body {
   font-family: Montserrat, sans-serif;
-  margin: 0;
-  font-weight: 100;
 }
 
 .nav {
-  position: fixed;
-  width: 100vw;
+  width: 100%;
   box-shadow: 0 0 10px $clr-gray300;
 
   &__list {
@@ -37,7 +34,7 @@ body {
     justify-content: flex-end;
     align-items: center;
     gap: 2rem;
-    margin: 0 2rem;
+    margin: 0 5rem;
 
     &logo {
       list-style: none;
