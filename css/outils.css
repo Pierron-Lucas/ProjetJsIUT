@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 30px;
+    flex-wrap: wrap;
 }
 
 .container5 .card {
