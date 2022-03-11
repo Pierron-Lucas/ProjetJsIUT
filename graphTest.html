@@ -7,12 +7,12 @@
 
 
 
-<script>
+<script id="graph">
     var xValues = [0,1,2,3,4,5,6,7,8,9,10,11,12];
-    var yValues = [7,8,8,9,9,10,11,14,14,15,12];
+    var yValues = [7,8,8,32,9,10,11,14,14,15,12];
 
 
-    new Chart("myChart", {
+    var graph = new Chart("myChart", {
         type: "line",
         data: {
             labels: xValues,
@@ -51,6 +51,7 @@
             }
         }
         document.getElementById("tableau").innerHTML = yValues;
+        graph.update();
         console.log(yValues);
     }
 
