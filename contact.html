@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="css/contact.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+        <title>Contact</title>
+    </head>
+<body>
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__listlogo">
+                <svg viewBox="0 0 640 512" width="100" title="infinity">
+                    <path d="M471.1 96C405 96 353.3 137.3 320 174.6 286.7 
+                    137.3 235 96 168.9 96 75.8 96 0 167.8 0 256s75.8 160 168.9 
+                    160c66.1 0 117.8-41.3 151.1-78.6 33.3 37.3 85 78.6 151.1 78.6 
+                    93.1 0 168.9-71.8 168.9-160S564.2 96 471.1 96zM168.9 320c-40.2 
+                    0-72.9-28.7-72.9-64s32.7-64 72.9-64c38.2 0 73.4 36.1 94 64-20.4 
+                    27.6-55.9 64-94 64zm302.2 0c-38.2 0-73.4-36.1-94-64 20.4-27.6 
+                    55.9-64 94-64 40.2 0 72.9 28.7 72.9 64s-32.7 64-72.9 64z" />
+                </svg>
+            </li>
+            <li class="nav__listitem"><a href="index.html">Accueil</a></li>
+            <li class="nav__listitem"><a href="doc.html">Documentation</a></li>
+            <li class="nav__listitem"><a href="contact.html">Contact</a></li>
+            <li class="nav__listitem"><a href="test/index.html">Test</a></li>            
+        </ul>
+    </nav>
+    <form action="mailto:" class="contact-form" method="POST" enctype="text/plain">
+        <div class="contact-info">
+        <input type="text"  name="nom"   class="nomZone" placeholder="Nom" required>
+        <input type="text"  name="prenom"   class="prenomZone"  placeholder="Prenom" required>
+        </div>
+        <div class="contact-info">
+        <input type="email" name="mail" class="emailZone" placeholder="Votre email" required>
+        <input type="tel"   name="numero"   class="Téléphone"   placeholder="Téléphone (optionnel)">
+        </div>
+        <input type="text"  name="sujet" class="sujetZone" placeholder="Sujet de votre message" required>
+        <textarea name="message" class="messageZone" placeholder="Saisissez votre message"></textarea>
+        <button name="submit" class="btn btn2" value="Soumettre">
+        </button>
+      </form>
+</body>
+</html>
