@@ -3,13 +3,6 @@
 
         <head>
             <meta charset="UTF-8">
-            <meta name="autor" content="Teamz">
-            <meta name="keywords" content="Teamz, projet, projetJavascript">
-            <meta name="copyright" content="Teamz">
-            <meta name="generator" content="WebStorm">
-            <meta name="publisher" content="Teamz">
-            <link rel="icon" href="img/favicon.con">
-            <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <link rel="stylesheet" type="text/css" href="css/style.css">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,15 +30,8 @@
                 </li>
     
                 <li class="nav__listitem"><a href="index.html">Accueil</a></li>
-                <li class="nav__listitem"><a href="doc.html">Documentation</a>
-                    <ul class="nav__listitemdrop">
-                        <li>Equipe & rôle</li>
-                        <li>Outils & Organisation</li>
-                        <li>Problèmes</li>
-                    </ul>
-                </li>
+                <li class="nav__listitem"><a href="doc.html">Documentation</a></li>
                 <li class="nav__listitem"><a href="contact.html">Contact</a></li>
-                <li class="nav__listitem"><a href="test/index.html">Test</a></li>
                 
             </ul>
         </nav>
@@ -90,18 +76,17 @@
                 unchanged. 
             </p>
             <a href="sensor.html">Accéder à mes pièces</a>
-            <img src="image/room-index.png" alt="">
+            <img src="image/pièce.png" alt="">
         </div>
 
         <div class="dashboard">
-            <h1 class="dashboard-title">Mon tableau de bord</h1>
             <div class="dashboard-section">
                 <div class="dashboard-section-block">
                   <!-- <h1><a href="">Alertes</a></h1> -->  
                   <h1>Alertes</h1>
                 </div>
                 <div class="dashboard-section-block">
-                    <h1>Cpateurs</h1>
+                    <h1>Capteurs</h1>
                 </div>
                 <div class="dashboard-section-block">
                    <h1>Pièces</h1>
@@ -112,6 +97,14 @@
             </div>
         </div>
 
+        <div class="connect">
+            <h1>Commencez le suivi en vous connectant</h1>
+            <form action="index.html" class="form-index">
+                <input type="text" placeholder="Adresse e-mail">
+                <input type="password" placeholder="Mot de passe">
+                <input type="submit" value="Se connecter" id="submit-index">
+            </form>
+        </div>
         <div id="particles-js"></div>
         <script src="js/particles/particles.js"></script>
         <script src="js/particles/app.js"></script>

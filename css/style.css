@@ -126,6 +126,22 @@ text-align: center;
 margin-top: 5%;
 }
 
+.doc img{
+  width: 100%;
+}
+
+#doc-title{
+  position: absolute;
+  top: 40%;
+  left: 15%;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 700;
+  text-shadow: #fff 0px 0px 20px;
+  width: 70%;
+  text-align: center;
+}
+
 .tabs button{
 color: #fff;
 background-color: #5758BB;
@@ -161,6 +177,7 @@ outline: none;
 position: relative;
 z-index: 2;
 background: #1B1464;
+height: 400px;
 }
 
 [role="tabpanel"].is-hidden {
@@ -358,30 +375,33 @@ transform: translateY(-2px);
 }
 
 .sensor-index-text{
-  background-color: #000;
+  background-color: rgba(27, 20, 100, 0.9);
   color: #1B1464;
-  height: 800px;
-  clip-path: polygon(0% 0%, 100% 0%, 0% 100%, 0% 100%);
-  width: 100%;
+  height: 450px;
+  width: 50%;
   position: absolute;
   top: 102%;
+  left: 5%;
+  border-radius: 20px;
+  text-align: center;
 }
 
 .sensor-index-text h1{
   color: #fff;
   font-size: 30px;
   font-weight: 1000;
-  margin: 5% 0 0 10%;
+  margin-top: 8%;
+  text-align: center;
 }
 
 .sensor-index-text p{
   font-size: 16px;
-  background-color: #1B1464;
-  color: #fff;
+  background-color: #fff;
+  color: #1B1464;
   padding: 20px;
-  width: 30%;
+  width: 80%;
   border-radius: 20px;
-  margin: 2% 0 8% 10%;
+  margin: 2% 0 5% 10%;
 }
 
 .sensor-index-text a{
@@ -391,7 +411,7 @@ transform: translateY(-2px);
   padding: 10px;
   border-radius: 20px;
   text-decoration: none;
-  margin-left: 5%;
+  width: auto;
   transition: .2s;
 }
 
@@ -401,10 +421,9 @@ transform: translateY(-2px);
 }
 
 .room-index{
-  background-color: #000;
+  background-color: #1B1464;
   width: 100%;
   height: 800px;
-  color: #fff;
 }
 
 .room-index img{
@@ -416,12 +435,13 @@ transform: translateY(-2px);
   font-weight: 1000;
   text-align: center;
   padding: 50px;
+  color: #fff;
 }
 
 .room-index p{
   width: 30%;
   font-size: 16px;
-  margin: 10% 0 0 5%;
+  margin: 5% 0 0 5%;
   color: #1B1464;
   background-color: #fff;
   padding: 20px;
@@ -447,36 +467,30 @@ transform: translateY(-2px);
 
 .dashboard{
   text-align: center;
-  margin-top: 3%;
-}
-
-.dashboard-title{
-  padding: 10px;
-  color: #fff;
-  font-size: 40px;
-  border-bottom: 15px solid #fff;
-  width: 25%;
-  margin: auto;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
 }
 
 .dashboard-section{
   display: flex;
-  margin: 30px auto;
+  margin: auto;
   width: 60%;
 }
 
 .dashboard-section-block{
-  height: 300px;
+  height: 50px;
   background-color: #fff;
-  width: 100%;
-  margin: 5px;
+  width: 50%;
+  margin: 10px;
   color: #1B1464;
   transition: .2s;
 }
 
 .dashboard-section h1{
-  margin-top: 50%;
   font-size: 20px;
+  margin-top: 15px;
 }
 
 .dashboard-section-block a{
@@ -489,5 +503,108 @@ transform: translateY(-2px);
   transform: scale(1.1);
   background-color: #0652DD;
   cursor: pointer;
+}
+
+.connect{
+  text-align: center;
+}
+
+.connect h1{
+  color: #fff;
+  font-size: 36px;
+}
+
+.form-index{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 20px auto;
+  width: 40%;
+}
+
+.form-index input{
+  padding: 15px;
+  width: 100%;
+  margin: 8px;
+  border: none;
+  outline: none;
+}
+
+#submit-index{
+  width: 20%;
+  cursor: pointer;
+  transition: 2s;
+}
+
+#submit-index:hover{
+  transition: .2;
+  background-color: #0652DD;
+}
+
+.doc-card{
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  flex-wrap: wrap;
+}
+
+.doc-card .doc-card-content {
+  position: relative;
+  max-width: 300px;
+  height: 215px;
+  background: #fff;
+  margin: 30px 10px;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 202px rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease-in-out;
+}
+
+.doc-card .doc-card-content:hover{
+  height: 420px;
+}
+
+.doc-card .doc-card-content .imgBx {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  top: -60px;
+  left: 20px;
+  z-index: 1;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.doc-card .doc-card-content .imgBx img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+.doc-card .doc-card-content .content {
+  position: relative;
+  margin-top: -140px;
+  padding: 10px 15px;
+  text-align: center;
+  color: #111;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.doc-card .doc-card-content:hover .content {
+  visibility: visible;
+  opacity: 1;
+  margin-top: -40px;
+  transition-delay: 0.3s;
+}
+
+.container4{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  font-family: "Bradley Hand", cursive;
 }
 
