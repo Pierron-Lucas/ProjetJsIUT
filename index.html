@@ -1,34 +1,139 @@
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-        <title>Document</title>
-    </head>
+<!DOCTYPE html>
+    <html lang="fr">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <link rel="stylesheet" type="text/css" href="css/style.css">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+            <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+            <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+            <title>Accueil</title>
+        </head>
+        
     <body>
 
-    <nav class="nav">
-        <ul class="nav__list">
-            <li class="nav__listlogo">
-                <svg viewBox="0 0 640 512" width="100" title="infinity">
-                    <path d="M471.1 96C405 96 353.3 137.3 320 174.6 286.7 137.3 235 96 168.9 96 75.8 96 0 167.8 0 256s75.8 160 168.9 160c66.1 0 117.8-41.3 151.1-78.6 33.3 37.3 85 78.6 151.1 78.6 93.1 0 168.9-71.8 168.9-160S564.2 96 471.1 96zM168.9 320c-40.2 0-72.9-28.7-72.9-64s32.7-64 72.9-64c38.2 0 73.4 36.1 94 64-20.4 27.6-55.9 64-94 64zm302.2 0c-38.2 0-73.4-36.1-94-64 20.4-27.6 55.9-64 94-64 40.2 0 72.9 28.7 72.9 64s-32.7 64-72.9 64z" />
-                </svg>
-            </li>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__listlogo">
+                    <svg viewBox="0 0 640 512" width="100" title="infinity">
+                        <path d="M471.1 96C405 96 353.3 137.3 320 174.6 286.7 
+                        137.3 235 96 168.9 96 75.8 96 0 167.8 0 256s75.8 160 168.9 
+                        160c66.1 0 117.8-41.3 151.1-78.6 33.3 37.3 85 78.6 151.1 78.6 
+                        93.1 0 168.9-71.8 168.9-160S564.2 96 471.1 96zM168.9 320c-40.2 
+                        0-72.9-28.7-72.9-64s32.7-64 72.9-64c38.2 0 73.4 36.1 94 64-20.4 
+                        27.6-55.9 64-94 64zm302.2 0c-38.2 0-73.4-36.1-94-64 20.4-27.6 
+                        55.9-64 94-64 40.2 0 72.9 28.7 72.9 64s-32.7 64-72.9 64z" />
+                    </svg>
+                </li>
+    
+                <li class="nav__listitem"><a href="index.html">Accueil</a></li>
+                <li class="nav__listitem"><a href="doc.html">Documentation</a></li>
+                <li class="nav__listitem"><a href="contact.html">Contact</a></li>
+                
+            </ul>
+        </nav>
 
-            <li class="nav__listitem">Accueil</li>
-            <li class="nav__listitem">Documentation
-                <ul class="nav__listitemdrop">
-                    <li>Equipe & rôle</li>
-                    <li>Outils & Organisation</li>
-                    <li>Problèmes</li>
-                </ul>
-            </li>
-            <li class="nav__listitem">Contact</li>
-        </ul>
-    </nav>
+        <div class="index-pres">
+            <img src="image/background.jpg" alt="">
+            <div id="header-text-page"></div>
+            <div class="index-pres-text" data-aos="fade-up" data-aos-duration="2000">
+                <p >Accéder aux capteurs, alertes et pièces de maisons</p>
+                <a href="#section" >Vérifier l'intégrité de ma maison</a>
+            </div>
+        </div>
 
-        <script src="js/captor.js"></script>
+        <div class="sensor-index">
+            <img src="image/sensor-index.jpg" alt="">
+            <div class="sensor-index-text">
+                <h1>Suivez vos capteurs en temps réél</h1>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing 
+                    and typesetting industry. Lorem Ipsum has been the 
+                    industry's standard dummy text ever since the 1500s, 
+                    when an unknown printer took a galley of type and 
+                    scrambled it to make a type specimen book. It has 
+                    survived not only five centuries, but also the leap 
+                    into electronic typesetting, remaining essentially 
+                    unchanged. 
+                </p>
+                <a href="sensor.html">Accéder à mes capteurs</a>
+            </div>
+        </div>
+
+        <div class="room-index">
+            <h1>Ajoutez ou supprimez des pièces</h1>
+            <p>
+                Lorem Ipsum is simply dummy text of the printing 
+                and typesetting industry. Lorem Ipsum has been the 
+                industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and 
+                scrambled it to make a type specimen book. It has 
+                survived not only five centuries, but also the leap 
+                into electronic typesetting, remaining essentially 
+                unchanged. 
+            </p>
+            <a href="sensor.html">Accéder à mes pièces</a>
+            <img src="image/pièce.png" alt="">
+        </div>
+
+        <div class="dashboard">
+            <div class="dashboard-section">
+                <div class="dashboard-section-block">
+                  <!-- <h1><a href="">Alertes</a></h1> -->  
+                  <h1>Alertes</h1>
+                </div>
+                <div class="dashboard-section-block">
+                    <h1>Capteurs</h1>
+                </div>
+                <div class="dashboard-section-block">
+                   <h1>Pièces</h1>
+                </div>
+                <div class="dashboard-section-block">
+                    <h1>Suivi de température</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="connect">
+            <h1>Commencez le suivi en vous connectant</h1>
+            <form action="index.html" class="form-index">
+                <input type="text" placeholder="Adresse e-mail">
+                <input type="password" placeholder="Mot de passe">
+                <input type="submit" value="Se connecter" id="submit-index">
+            </form>
+        </div>
+        <div id="particles-js"></div>
+        <script src="js/particles/particles.js"></script>
+        <script src="js/particles/app.js"></script>
+        <script>
+            var chaine = "Controlez votre maison, partout où que vous soyez";
+            var nb_car = chaine.length; 
+            var tableau = chaine.split("");
+            texte = new Array;
+            var txt = '';
+            var nb_msg = nb_car - 1;
+                    
+            for (i=0; i<nb_car; i++) {
+                texte[i] = txt+tableau[i];
+                var txt = texte[i];
+            }
+            
+            actual_texte = 0;
+            function changeMessage(){
+                document.getElementById("header-text-page").innerHTML = texte[actual_texte];
+                actual_texte++;
+                if(actual_texte >= texte.length)
+                actual_texte = nb_msg;
+            }
+            if(document.getElementById)
+                setInterval("changeMessage()",30) /* la vitesse de defilement (plus on a une valeur faible plus 
+            texte s'affiche rapidement) */
+        </script>
+        <script>
+            AOS.init();
+          </script>
     </body>
 </html>
