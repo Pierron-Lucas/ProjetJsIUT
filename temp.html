@@ -12,13 +12,72 @@
 </head>
 
 <body>
+    <style>
+        #ligne_modele {
+				display: none;
+			}
+      </style>
+        
+        <table role="tabpanel" id="Capteur interieur">
+        <tr><th colspan="2">Historique</th></tr>
+        <tr>
+            <th>type</th>
+          <th>Date</th>
+          <th>heure</th>
+          <th>Température</th>
+        </tr>
+        <tr id="ligne_modele">
+            <td class="td_type"></td>
+          <td class="td_date"></td>
+          <td class="td_hour"></td>
+          <td class="td_temperature"></td>
+        </tr>
+      </table>
+      
     <h1> Valeur : </h1>
     <p id='status'></p>
     <code id='datas'></code>
     <button id='notifications'> Notification</button>
-    <h2>Notifications</h2>
-    <button id="notifications">Notifications</button>
+    
+    
     <script> socket = new WebSocket("wss://ws.hothothot.dog:9502");
+                temp = 0.0;
+                function getSensors(){
+                socket.onmessage = function (event) {
+                var json = JSON.parse(event.data);
+                datas = document.getElementById("datas");
+                datas.innerHTML= event.data;
+                var date = new Date(json.capteurs[0].Timestamp*1000);
+                var datecon = date.getDate()+"/" +date.getMonth()+"/"+date.getFullYear();
+                var datehour = date.getHours()+":" + date.getMinutes()+":"+date.getSeconds();
+                temp = parseFloat(json.capteurs[0].Valeur); 
+                //return parseFloat(json.capteurs[0].Valeur);
+                let clone_capteur_interieur = document.getElementById("ligne_modele").cloneNode(true);
+						clone_capteur_interieur.setAttribute("id", "");	
+                        clone_capteur_interieur.querySelector(".td_type").innerText = json.capteurs[0].type
+						clone_capteur_interieur.querySelector(".td_date").innerText = datecon;
+                        clone_capteur_interieur.querySelector(".td_hour").innerText = datehour;
+                        clone_capteur_interieur.querySelector(".td_temperature").innerText = json.capteurs[0].Valeur;
+						clone_capteur_interieur.style.display = "table-row";
+						let table_tbody = document.querySelector("table tbody");
+                      /*  let clone_capteur_exterieur = document.getElementById("capteur_exterieur").cloneNode(true);
+						clone_capteur_exterieur.setAttribute("id", "");	
+                        clone_capteur_exterieur.querySelector(".td_type2").innerText = json.capteurs[0].type
+						clone_capteur_exterieur.querySelector(".td_date2").innerText = datecon;
+                        clone_capteur_exterieur.querySelector(".td_hour2").innerText = datehour;
+                        clone_capteur_exterieur.querySelector(".td_temperature2").innerText = json.capteurs[0].Valeur;
+						clone_capteur_exterieur.style.display = "table-row";*/
+						table_tbody.insertBefore(clone_capteur_interieur,table_tbody.querySelector("#ligne_modele").nextSibling);
+                        /*let table_body = document.querySelector("table body");
+                        table_body.insertBefore(clone_capteur_exterieur,table_body.querySelector("#ligne_capteur_exterieur").nextSibling);*/
+						
+                        //capteur interieur
+                        //-------------------------------------------------
+                        
+                        
+                        
+                }
+        }
         socket.onopen = function (event) {
             console.log("Connexion établie");
 
@@ -30,27 +89,21 @@
             socket.send("coucou !");
 
             // au retour...
-            socket.onmessage = function (event) {
-                var datas = document.getElementById("datas");
-                datas.innerHTML = event.data;
-                var json = JSON.parse(event.data);
-                console.log(json.capteurs[0].Valeur);
+             getSensors();
+             
+                 
+             
+               
 
 
             }
-        }
-        function getSensors(){
-            return 0;
-        }
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * Math.floor(max));
-        }
-
+           
+    
         function randomNotification() {
-            var randomNumber = getSensors();
+            var randomNumber = temp;
             console.log(randomNumber);
+            
             if (randomNumber >= 2) {
-
                 var notifTitle = "Chaud, non ?";
                 var notifBody = 'Température : ' + randomNumber + '.';
                 var notifImg = '/assets/images/android-chrome-192x192.png';
@@ -78,6 +131,7 @@
                 }
             });
         });
+        
    /* capteur = '{"HotHotHot":"Api v1.0","capteurs":[{"type":"Thermique","Nom":"interieur","Valeur":"15.6","Timestamp":1646985511},{"type":"Thermique","Nom":"exterieur","Valeur":"10.6","Timestamp":1646985511}]}';
          var json = JSON.parse(capteur);
          console.log(typeof json.capteurs[0].Valeur);
@@ -85,6 +139,7 @@
          console.log(date);
          console.log(datas);*/
     </script>
+   
     <script src="amuhome/b20016425/dossier/app.js"></script>
 </body>
 
