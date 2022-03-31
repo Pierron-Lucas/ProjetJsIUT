@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+
+<script id="graph">
+    var yValues = localStorage.getItem('yValues')
+    if (!yValues){
+        yValues = [0,0,0,0,0,0]
+    }
+    else{
+        yValues = yValues.split(',')
+    }
+    var xValues = [0,1,2,3,4,5,6,7,8,9,10,11,12];
+
+
+  var graph = new Chart("myChart", {
+    type: "line",
+    data: {
+      labels: xValues,
+      datasets: [{
+        fill: false,
+        lineTension: 0,
+        backgroundColor: "rgba(0,0,255,1.0)",
+        borderColor: "rgba(0,0,255,0.1)",
+        data: yValues
+      }]
+    },
+    options: {
+      legend: {display: false},
+      scales: {
+        yAxes: [{ticks: {min: -50, max:50}}],
+      }
+    }
+  });
+</script>
+
+<input id="majButton" type="button"  value="Maj">
+<p id = "tableau"> <script> document.write(yValues) </script> </p><!--/!\ afficher dans HTML -->
+
+
+<script>
+  document.getElementById("majButton").addEventListener("click", function(){majTab(yValues)});
+
+  function majTab(yValues){
+    newTemp = Math.floor((Math.random() * 100) + 1)/2;
+    yValues.shift()//remove first
+    yValues.push(newTemp)//add last
+    localStorage.setItem('yValues',yValues.toString());
+    document.getElementById("tableau").innerHTML = yValues;
+    graph.update();
+    console.log(yValues);
+  }
+
+</script>
+
+<p><script>
+  var timestamp = 1646985511000
+  var date = new Date(timestamp);
+  console.log(date.getTime())
+  console.log(date)
+</script></p>
+
+</body>
+</html>
