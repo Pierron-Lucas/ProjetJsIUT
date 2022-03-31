@@ -14,11 +14,15 @@
 <body>
     <style>
         #ligne_modele {
-				display: none;
+				
+            display: none;
+			}
+        #ligne_modele2 {
+			display: none;
 			}
       </style>
         
-        <table role="tabpanel" id="Capteur interieur">
+        <table role="tabpanel" id="Capteur_interieur">
         <tr><th colspan="2">Historique</th></tr>
         <tr>
             <th>type</th>
@@ -33,6 +37,21 @@
           <td class="td_temperature"></td>
         </tr>
       </table>
+     <!-- <table role="tabpanel" id="Capteur_exterieur">
+        <tr><th colspan="2">Capteur exterieur</th></tr>
+        <tr>
+        <th>type</th>
+          <th>Date</th>
+          <th>heure</th>
+          <th>Température</th>
+        </tr>
+        <tr id="ligne_modele2">
+            <td class="td_type2"></td>
+          <td class="td_date2"></td>
+          <td class="td_hour2"></td>
+          <td class="td_temperature2"></td>
+        </tr>
+      </table>-->
       
     <h1> Valeur : </h1>
     <p id='status'></p>
@@ -48,29 +67,28 @@
                 datas = document.getElementById("datas");
                 datas.innerHTML= event.data;
                 var date = new Date(json.capteurs[0].Timestamp*1000);
-                var datecon = date.getDate()+"/" +date.getMonth()+"/"+date.getFullYear();
+                var currentdate = date.getDate()+"/" +date.getMonth()+"/"+date.getFullYear();
                 var datehour = date.getHours()+":" + date.getMinutes()+":"+date.getSeconds();
-                temp = parseFloat(json.capteurs[0].Valeur); 
-                //return parseFloat(json.capteurs[0].Valeur);
+                temp = parseFloat(json.capteurs[0].Valeur);
                 let clone_capteur_interieur = document.getElementById("ligne_modele").cloneNode(true);
 						clone_capteur_interieur.setAttribute("id", "");	
                         clone_capteur_interieur.querySelector(".td_type").innerText = json.capteurs[0].type
-						clone_capteur_interieur.querySelector(".td_date").innerText = datecon;
+						clone_capteur_interieur.querySelector(".td_date").innerText = currentdate;
                         clone_capteur_interieur.querySelector(".td_hour").innerText = datehour;
                         clone_capteur_interieur.querySelector(".td_temperature").innerText = json.capteurs[0].Valeur;
 						clone_capteur_interieur.style.display = "table-row";
 						let table_tbody = document.querySelector("table tbody");
-                      /*  let clone_capteur_exterieur = document.getElementById("capteur_exterieur").cloneNode(true);
+                        table_tbody.insertBefore(clone_capteur_interieur,table_tbody.querySelector("#ligne_modele").nextSibling);
+                       /* let clone_capteur_exterieur = document.getElementById("ligne_modele2").cloneNode(true);
 						clone_capteur_exterieur.setAttribute("id", "");	
-                        clone_capteur_exterieur.querySelector(".td_type2").innerText = json.capteurs[0].type
-						clone_capteur_exterieur.querySelector(".td_date2").innerText = datecon;
+                        clone_capteur_exterieur.querySelector(".td_type2").innerText = json.capteurs[1].type
+						clone_capteur_exterieur.querySelector(".td_date2").innerText = currentdate;
                         clone_capteur_exterieur.querySelector(".td_hour2").innerText = datehour;
-                        clone_capteur_exterieur.querySelector(".td_temperature2").innerText = json.capteurs[0].Valeur;
-						clone_capteur_exterieur.style.display = "table-row";*/
-						table_tbody.insertBefore(clone_capteur_interieur,table_tbody.querySelector("#ligne_modele").nextSibling);
-                        /*let table_body = document.querySelector("table body");
-                        table_body.insertBefore(clone_capteur_exterieur,table_body.querySelector("#ligne_capteur_exterieur").nextSibling);*/
-						
+                        clone_capteur_exterieur.querySelector(".td_temperature2").innerText = json.capteurs[1].Valeur;
+						clone_capteur_exterieur.style.display = "table-row";
+						let table_body = document.querySelector("table tbody");
+                        table_body.insertBefore(clone_capteur_exterieur,table_body.querySelector("#ligne_modele2").nextSibling);
+						*/
                         //capteur interieur
                         //-------------------------------------------------
                         
@@ -100,12 +118,11 @@
            
     
         function randomNotification() {
-            var randomNumber = temp;
-            console.log(randomNumber);
             
-            if (randomNumber >= 2) {
-                var notifTitle = "Chaud, non ?";
-                var notifBody = 'Température : ' + randomNumber + '.';
+            
+            if (temp >= 20) {
+                var notifTitle = "Ca chauffe la ";
+                var notifBody = 'Température : ' + temp + '.';
                 var notifImg = '/assets/images/android-chrome-192x192.png';
                 var options = {
                     body: notifBody,
@@ -115,7 +132,7 @@
             }
             else {
                 var Title = "Il fait froid";
-                var body = 'Température :' + randomNumber + '.';
+                var body = 'Température :' + temp + '.';
                 var img = '/assets/images/android-chrome-192x192.png';
                 var opt = { body: body, icon: img }
                 var notification = new Notification(Title, opt);
