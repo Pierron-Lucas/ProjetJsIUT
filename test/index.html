@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+    <html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <link rel="stylesheet" type="text/css" href="style.css">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+            <title>Document</title>
+        </head>
+        
+    <body>
+
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__listlogo">
+                    <svg viewBox="0 0 640 512" width="100" title="infinity">
+                        <path d="M471.1 96C405 96 353.3 137.3 320 174.6 286.7 
+                        137.3 235 96 168.9 96 75.8 96 0 167.8 0 256s75.8 160 168.9 
+                        160c66.1 0 117.8-41.3 151.1-78.6 33.3 37.3 85 78.6 151.1 78.6 
+                        93.1 0 168.9-71.8 168.9-160S564.2 96 471.1 96zM168.9 320c-40.2 
+                        0-72.9-28.7-72.9-64s32.7-64 72.9-64c38.2 0 73.4 36.1 94 64-20.4 
+                        27.6-55.9 64-94 64zm302.2 0c-38.2 0-73.4-36.1-94-64 20.4-27.6 
+                        55.9-64 94-64 40.2 0 72.9 28.7 72.9 64s-32.7 64-72.9 64z" />
+                    </svg>
+                </li>
+    
+                <li class="nav__listitem"><a href="index.html">Accueil</a></li>
+                <li class="nav__listitem"><a href="doc.html">Documentation</a>
+                    <ul class="nav__listitemdrop">
+                        <li>Equipe & rôle</li>
+                        <li>Outils & Organisation</li>
+                        <li>Problèmes</li>
+                    </ul>
+                </li>
+                <li class="nav__listitem"><a href="contact.html">Contact</a></li>
+                
+            </ul>
+        </nav>
+
+        <div class="dashboard abs">
+            <h1>Mon tableau de bord</h1>
+            <div class="dashboard-flex">
+              <div class="dashboard-block long-height-block">
+                <h2>Dernieres informations</h2>
+                <p>Pas de nouvelles, bonne nouvelle !</p>
+              </div>
+              <div class="dashboard-block long-width-block">
+                <h2>Vos capteurs (4)</h2>
+                <div class="sensor">
+                  <div class="sensor-inside sensor-global">
+                      <h3>Capteurs intérieur</h3>
+                      <div class="sensor-info">
+                          <p>Nom : Capteur 1</p>
+                          <img src="../image/sensor.png" alt="">
+                          <p>Température actuelle :</p>
+                      </div>
+                      <div class="sensor-info">
+                          <p>Nom : Capteur 2</p>
+                          <img src="../image/sensor.png" alt="">
+                          <p>Température actuelle :</p>
+                      </div>
+                  </div>
+                  <div class="sensor-outside sensor-global">
+                      <h3>Capteurs extérieur</h3>
+                      <div class="sensor-info">
+                          <p>Nom : Capteur 3</p>
+                          <img src="../image/sensor.png" alt="">
+                          <p>Température actuelle :</p>
+                      </div>
+                      <div class="sensor-info">
+                          <p>Nom : Capteur 4</p>
+                          <img src="../image/sensor.png" alt="">
+                          <p>Température actuelle :</p>
+                      </div>
+                  </div>
+              </div>
+              </div>
+              <div class="dashboard-block new-block">
+                <div class="new-block-content">
+                  <i class="fas fa-plus"></i>
+                  <h2>Nouvel Item</h2>
+                </div>
+              </div>
+            </div>
+            <!--<div class="dashboard-content">
+                <div class="dashboard-news">
+                    <h3>Dernières nouvelles</h3>
+                    <p>Tout est tranquille, vous pouvez vous reposer</p>
+                </div>
+                <div class="div-border"></div>
+                <div class="dashboard-sensors">
+                    <h3>Vos capteurs</h3>
+                    
+                </div>
+            </div> -->
+        </div>
+
+        <div id="particles-js"></div>
+        <script src="../js/particles/particles.js"></script>
+        <script src="../js/particles/app.js"></script>
+    </body>
+</html>
