@@ -23,44 +23,41 @@
       </style>
         
         <table role="tabpanel" id="Capteur_interieur">
-        <tr><th colspan="2">Historique</th></tr>
+        <tr><th colspan="2">Capteurs</th></tr>
         <tr>
+            <th>Nom capteur</th>
             <th>type</th>
           <th>Date</th>
           <th>heure</th>
           <th>Température</th>
-        </tr>
-        <tr id="ligne_modele">
-            <td class="td_type"></td>
-          <td class="td_date"></td>
-          <td class="td_hour"></td>
-          <td class="td_temperature"></td>
-        </tr>
-      </table>
-     <!-- <table role="tabpanel" id="Capteur_exterieur">
-        <tr><th colspan="2">Capteur exterieur</th></tr>
-        <tr>
-        <th>type</th>
+          <th>Nom capteur</th>
+            <th>type</th>
           <th>Date</th>
           <th>heure</th>
           <th>Température</th>
+          
         </tr>
-        <tr id="ligne_modele2">
-            <td class="td_type2"></td>
-          <td class="td_date2"></td>
-          <td class="td_hour2"></td>
-          <td class="td_temperature2"></td>
+        <tr id="ligne_modele">
+            <td class="td_Nom"></td>
+            <td class="td_type"></td>
+          <td class="td_date"></td>
+          <td class="td_hour"></td>
+          <td class="td_temperature">
+          </td>
+          <td class="td_Nom2"></td>
+          <td class="td_type2"></td>
+        <td class="td_date2"></td>
+        <td class="td_hour2"></td>
+        <td class="td_temperature2"></td>
         </tr>
-      </table>-->
-      
-    <h1> Valeur : </h1>
+      </table>
     <p id='status'></p>
     <code id='datas'></code>
     <button id='notifications'> Notification</button>
     
     
     <script> socket = new WebSocket("wss://ws.hothothot.dog:9502");
-                temp = 0.0;
+               
                 function getSensors(){
                 socket.onmessage = function (event) {
                 var json = JSON.parse(event.data);
@@ -69,29 +66,25 @@
                 var date = new Date(json.capteurs[0].Timestamp*1000);
                 var currentdate = date.getDate()+"/" +date.getMonth()+"/"+date.getFullYear();
                 var datehour = date.getHours()+":" + date.getMinutes()+":"+date.getSeconds();
-                temp = parseFloat(json.capteurs[0].Valeur);
+                TempCapteurInterieur = parseFloat(json.capteurs[0].Valeur);
+                TempCapteurExterieur = parseFloat(json.capteurs[1].Valeur);
+                
                 let clone_capteur_interieur = document.getElementById("ligne_modele").cloneNode(true);
-						clone_capteur_interieur.setAttribute("id", "");	
+						clone_capteur_interieur.setAttribute("id", "");
+                        clone_capteur_interieur.querySelector(".td_Nom").innerText = json.capteurs[0].Nom
                         clone_capteur_interieur.querySelector(".td_type").innerText = json.capteurs[0].type
 						clone_capteur_interieur.querySelector(".td_date").innerText = currentdate;
                         clone_capteur_interieur.querySelector(".td_hour").innerText = datehour;
                         clone_capteur_interieur.querySelector(".td_temperature").innerText = json.capteurs[0].Valeur;
+                        clone_capteur_interieur.querySelector(".td_Nom2").innerText = json.capteurs[1].Nom
+                        clone_capteur_interieur.querySelector(".td_type2").innerText = json.capteurs[1].type
+						clone_capteur_interieur.querySelector(".td_date2").innerText = currentdate;
+                        clone_capteur_interieur.querySelector(".td_hour2").innerText = datehour;
+                        clone_capteur_interieur.querySelector(".td_temperature2").innerText = json.capteurs[1].Valeur;
 						clone_capteur_interieur.style.display = "table-row";
 						let table_tbody = document.querySelector("table tbody");
                         table_tbody.insertBefore(clone_capteur_interieur,table_tbody.querySelector("#ligne_modele").nextSibling);
-                       /* let clone_capteur_exterieur = document.getElementById("ligne_modele2").cloneNode(true);
-						clone_capteur_exterieur.setAttribute("id", "");	
-                        clone_capteur_exterieur.querySelector(".td_type2").innerText = json.capteurs[1].type
-						clone_capteur_exterieur.querySelector(".td_date2").innerText = currentdate;
-                        clone_capteur_exterieur.querySelector(".td_hour2").innerText = datehour;
-                        clone_capteur_exterieur.querySelector(".td_temperature2").innerText = json.capteurs[1].Valeur;
-						clone_capteur_exterieur.style.display = "table-row";
-						let table_body = document.querySelector("table tbody");
-                        table_body.insertBefore(clone_capteur_exterieur,table_body.querySelector("#ligne_modele2").nextSibling);
-						*/
-                        //capteur interieur
-                        //-------------------------------------------------
-                        
+                     
                         
                         
                 }
@@ -117,12 +110,9 @@
             }
            
     
-        function randomNotification() {
-            
-            
-            if (temp >= 20) {
-                var notifTitle = "Ca chauffe la ";
-                var notifBody = 'Température : ' + temp + '.';
+        function getNotifications() {
+                var notifTitle = "voici la température des capteurs ";
+                var notifBody = 'Température des capteurs : capteur intérieur : ' + TempCapteurInterieur + ' capteur extérieur' + TempCapteurExterieur +'.';
                 var notifImg = '/assets/images/android-chrome-192x192.png';
                 var options = {
                     body: notifBody,
@@ -130,34 +120,21 @@
                 }
                 var notif = new Notification(notifTitle, options);
             }
-            else {
-                var Title = "Il fait froid";
-                var body = 'Température :' + temp + '.';
-                var img = '/assets/images/android-chrome-192x192.png';
-                var opt = { body: body, icon: img }
-                var notification = new Notification(Title, opt);
-            }
-            setTimeout(randomNotification, 30000);
+          
+            setTimeout(getNotifications, 30000);
 
-        }
+        
         var button = document.getElementById("notifications");
         button.addEventListener('click', function (e) {
             Notification.requestPermission().then(function (result) {
                 if (result === 'granted') {
-                    randomNotification();
+                    getNotifications();
                 }
             });
         });
         
-   /* capteur = '{"HotHotHot":"Api v1.0","capteurs":[{"type":"Thermique","Nom":"interieur","Valeur":"15.6","Timestamp":1646985511},{"type":"Thermique","Nom":"exterieur","Valeur":"10.6","Timestamp":1646985511}]}';
-         var json = JSON.parse(capteur);
-         console.log(typeof json.capteurs[0].Valeur);
-         date = new Date(json.capteurs[0].Timestamp*1000);
-         console.log(date);
-         console.log(datas);*/
+ 
     </script>
-   
-    <script src="amuhome/b20016425/dossier/app.js"></script>
 </body>
 
 </html>
