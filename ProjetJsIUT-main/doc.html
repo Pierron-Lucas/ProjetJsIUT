@@ -6,6 +6,10 @@
         <link rel="stylesheet" href="css/style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
         <title>Document</title>
     </head>
 <body>
@@ -24,376 +28,231 @@
             </li>
 
             <li class="nav__listitem"><a href="index.html">Accueil</a></li>
-            <li class="nav__listitem"><a href="doc.html">Documentation</a>
-                <ul class="nav__listitemdrop">
-                    <li>Equipe & rôle</li>
-                    <li>Outils & Organisation</li>
-                    <li>Problèmes</li>
-                    <li>Changement à apporter</li>
-                </ul>
-            </li>
-            <li class="nav__listitem">Contact</li>
-            <li class="nav__listitem">Mode Nuit</li>
+            <li class="nav__listitem"><a href="doc.html">Documentation</a></li>
+            <li class="nav__listitem"><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
-  <div class="tabs">
-    <div role="tablist" aria-label="Documentation">
-      <button type="button" role="tab" aria-selected="true" aria-controls="equipe-tab" id="equipe">Notre équipe</button>
-      <button type="button" role="tab" aria-selected="false" aria-controls="outils-tab" id="outils" tabindex="-1">Outils
-        utilisés</button>
-      <button type="button" role="tab" aria-selected="false" aria-controls="difficulte-tab" id="difficulte"
-        tabindex="-1" data-deletable="">Difficultés rencontrées</button>
-      <button type="button" role="tab" aria-selected="true" aria-controls="changement-tab" id="changement">changement à
-        apporter</button>
+    <div class="doc">
+        <div id="doc-title"></div>
+        <img src="image/2.jpg" alt="">
     </div>
+    
+    <div class="tabs">
+        <div role="tablist" aria-label="Documentation">
+          <button type="button" role="tab" aria-selected="true" aria-controls="equipe-tab" id="equipe">Notre équipe</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="outils-tab" id="outils" tabindex="-1">Outils
+            utilisés</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="difficulte-tab" id="difficulte"
+            tabindex="-1" data-deletable="">Difficultés rencontrées</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="changement-tab" id="changement">Changement à
+            apporter</button>
+        </div>
 
-    <div tabindex="0" role="tabpanel" id="equipe-tab" aria-labelledby="equipe">
-        <section>
-            <div class="container">
-                    <div class="card-wrapper">
-                        <div class="card">
-                            <img src="image/background-team.jpg" alt="" class="card-img">
-                            <img src="image/lucas.jpg" alt="" class="profile-img">
-                            <h1>Lucas Pierron</h1>
-                            <p class="job-title">Job title</p>
-                            <a href="presentation/arnaud-legrand.pdf" class="btnTeam">En savoir plus</a>
-                            <ul class="social-media">
-                                <a href="https://www.linkedin.com/in/lucas-pierron-789973227/?locale=ms_MY"><li><i class="fab fa-linkedin-in"></i></li></a>
-                                <a href="https://fr-fr.facebook.com/lucas.pierron.96199"><li><i class="fab fa-facebook"></i></li></a>
-                            </ul>
-                        </div>
-        
-                        <div class="card">
-                            <img src="image/background-team.jpg" alt="" class="card-img">
-                            <img src="image/karim.jpg" alt="" class="profile-img">
-                            <h1>Karim Boudjaoui</h1>
-                            <p class="job-title">Job Title</p>
-                            <a href="presentation/gaelle.PNG" class="btnTeam">En savoir plus</a>
-                            <ul class="social-media">
-                                <a href="https://www.linkedin.com/in/karim-boudjaoui-743229a6/"><i class="fab fa-linkedin-in"></i></a>
-                                
-                            </ul>
-                        </div>
-        
-                        <div class="card">
-                            <img src="image/background-team.jpg" alt="" class="card-img">
-                            <img src="image/benjamin.jpg" alt="" class="profile-img">
-                            <h1>Bérard Benjamin</h1>
-                            <p class="job-title">Job Title</p>
-                            <a href="presentation/jc.PNG" class="btnTeam">En savoir plus</a>
-                            <ul class="social-media">
-                                <a href="https://www.linkedin.com/in/benjamin-berard-2abb46233/"><li><i class="fab fa-linkedin-in"></i></li></a>
-                                
-                            </ul>
-                        </div>
-        
-                        <div class="card">
-                            <img src="image/background-team.jpg" alt="" class="card-img">
-                            <img src="image/manaud.jpg" alt="" class="profile-img">
-                            <h1>Manaud Calixte</h1>
-                            <p class="job-title">Job Title</p>
-                            <a href="presentation/pierre-yves-pascal.PNG" class="btnTeam">En savoir plus</a>
-                            <ul class="social-media">
-                              <a href="https://www.facebook.com/manaud.calixte.5/"><li><i class="fab fa-facebook"></i></li></a>
-                            </ul>
-                        </div>
+        <div tabindex="0" role="tabpanel" id="equipe-tab" aria-labelledby="equipe">
+            <section>
+                <div class="container">
+                        <div class="card-wrapper">
+                            <div class="card">
+                                <img src="image/background-team.jpg" alt="" class="card-img">
+                                <img src="image/lucas.jpg" alt="" class="profile-img">
+                                <h1>Lucas Pierron</h1>
+                                <p class="job-title">Développeur Web</p>
+                                <a href="presentation/pierron.pdf" class="btnTeam">En savoir plus</a>
+                                <ul class="social-media">
+                                    <a href="https://www.linkedin.com/in/lucas-pierron-789973227/?locale=ms_MY"><li><i class="fab fa-linkedin-in"></i></li></a>
+                                    <a href="https://fr-fr.facebook.com/lucas.pierron.96199"><li><i class="fab fa-facebook"></i></li></a>
+                                </ul>
+                            </div>
                         
-                        <div class="card">
-                            <img src="image/background-team.jpg" alt="" class="card-img">
-                            <img src="image/anthony.jpg" alt="" class="profile-img">
-                            <h1>Anthony Ruiz</h1>
-                            <p class="job-title">Job Title</p>
-                            <a href="presentation/marc-oresmus.PNG" class="btnTeam">En savoir plus</a>
-                            <ul class="social-media">
-                                <a href="https://www.facebook.com/profile.php?id=100011521212915"><li><i class="fab fa-facebook"></i></li></a>
-                            </ul>
+                            <div class="card">
+                                <img src="image/background-team.jpg" alt="" class="card-img">
+                                <img src="image/karim.jpg" alt="" class="profile-img">
+                                <h1>Karim Boudjaoui</h1>
+                                <p class="job-title">Développeur Web</p>
+                                <a href="presentation/boudjaoui.pdf" class="btnTeam">En savoir plus</a>
+                                <ul class="social-media">
+                                    <a href="https://www.linkedin.com/in/karim-boudjaoui-743229a6/"><i class="fab fa-linkedin-in"></i></a>
+
+                                </ul>
+                            </div>
+                        
+                            <div class="card">
+                                <img src="image/background-team.jpg" alt="" class="card-img">
+                                <img src="image/benjamin.jpg" alt="" class="profile-img">
+                                <h1>Bérard Benjamin</h1>
+                                <p class="job-title">Développeur Web</p>
+                                <a href="presentation/berard.pdf" class="btnTeam">En savoir plus</a>
+                                <ul class="social-media">
+                                    <a href="https://www.linkedin.com/in/benjamin-berard-2abb46233/"><li><i class="fab fa-linkedin-in"></i></li></a>
+
+                                </ul>
+                            </div>
+                        
+                            <div class="card">
+                                <img src="image/background-team.jpg" alt="" class="card-img">
+                                <img src="image/manaud.jpg" alt="" class="profile-img">
+                                <h1>Manaud Calixte</h1>
+                                <p class="job-title">Développeur Web</p>
+                                <a href="presentation/calixte.pdf" class="btnTeam">En savoir plus</a>
+                                <ul class="social-media">
+                                  <a href="https://www.facebook.com/manaud.calixte.5/"><li><i class="fab fa-facebook"></i></li></a>
+                                </ul>
+                            </div>
+
+                            <div class="card">
+                                <img src="image/background-team.jpg" alt="" class="card-img">
+                                <img src="image/anthony.jpg" alt="" class="profile-img">
+                                <h1>Anthony Ruiz</h1>
+                                <p class="job-title">Développeur Web</p>
+                                <a href="presentation/ruiz.pdf" class="btnTeam">En savoir plus</a>
+                                <ul class="social-media">
+                                  <a href="https://www.facebook.com/profile.php?id=100011521212915"><li><i class="fab fa-facebook"></i></li></a>
+                                </ul>
+                            </div>
                         </div>
                     </div>
+                </section> 
+        </div>
+
+        <div tabindex="0" role="tabpanel" id="outils-tab" aria-labelledby="outils" class="is-hidden">
+            <div class="doc-card">
+                <div class="doc-card-content">
+                    <div class="imgBx">
+                        <img src="image/gantt.png" alt="gantt">
+                    </div>
+                    <div class="content">
+                        <h2>Gantt</h2>
+                        <p>
+                            Pour créer notre diagramme de Gantt nous avons utilisé le logiciel Notion. Ce dernier nous a permis de planifier correctement 
+                            notre projet,en effet le diagramme de Gantt permet d'avoir une vue d'ensemble de ce que nous avons accompli,
+                            mais aussi de ce qu'il nous reste à faire avant de livrer le projet. Il est donc essentiel
+                            de réaliser un Gantt de qualité, pour avoir un projet de bonne qualité.
+                        </p>
+                    </div>
                 </div>
-            </section>
-    </div>
-
-    <div tabindex="0" role="tabpanel" id="outils-tab" aria-labelledby="outils" class="is-hidden">
-      <div class="container4">
-        <h1>Outils et organisation</h1>
-    </div>
-
-    <div class="container5">
-        <div class="card">
-            <div class="imgBx">
-                <img src="image/gantt.png" alt="gantt">
+            
+                <div class="doc-card-content">
+                    <div class="imgBx">
+                        <img src="image/img_discord.png" alt="Discord">
+                    </div>
+                    <div class="content">
+                        <h2>Discord</h2>
+                        <p>
+                            En raison de la crise sanitaire qui est actuellement sur le sol français, nous avons décidé 
+                            de réduire les interactions sociales afin de nous protéger mais aussi de protéger nos proches. C'est 
+                            pour cela que nous utilisons le logiciel Discord, qui permet de passer des appels qui nous a permis de réaliser 
+                            l'ensemble de nos réunions mais aussi de pouvoir poser nos différentes questions.
+                        </p>
+                    </div>
+                </div>
+            
+                <div class="doc-card-content">
+                    <div class="imgBx">
+                        <img src="image/github-logo.png" alt="Github">
+                    </div>
+                    <div class="content">
+                        <h2>Github</h2>
+                        <p>
+                            Pour pouvoir nous partager le code et pour avancer sur différentes parties en même temps, nous avons décidé d'utiliser
+                            le logiciel GitHub qui permet aux différents développeurs de modifier, d’adapter et d’améliorer leurs codes gratuitement.
+                        </p>
+                    </div>
+                </div>
+            
+                <div class="doc-card-content">
+                    <div class="imgBx">
+                        <img src="image/VSCODE.png" alt="VsCode">
+                    </div>
+                    <div class="content">
+                        <h2>VsCode</h2>
+                        <p>
+                            Visual Studio Code est un éditeur de code open-source développé par Microsoft supportant
+                            un très grand nombre de langages. C'est donc pour cela que nous avons décidé d'utiliser ce dernier
+                           afin de mener à bien notre projet.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="content">
-                <h2>Gantt</h2>
-                <p>Grâce à ce diagramme, cela nous permet
-                   de voir notre emploi du temps mise tout au long du projet.
-                   Il permet aussi de voir l'avancement du projet</p>
+        </div>
+
+        <div tabindex="0" role="tabpanel" id="difficulte-tab" aria-labelledby="difficulte" class="is-hidden">
+            <div class="doc-card">
+                <div class="doc-card-content">
+                    <div class="imgBx">
+                        <img src="./image/questions.jpg" alt="difficulte">
+                    </div>
+                    <div class="content">
+                        <h2>Difficultés rencontrées</h2>
+                        <p>
+                            Lors de ce projet, l'ensemble du groupe a remarqué plusieurs choses qui n'allaient pas.</br>
+                            En effet, l'accès au serveur était quasiment impossible, de plus le temps fourni pour remplir le cahier des charges était trop court.</br>
+                            Sinon l'équipe a trouvé que le thème du projet était intéressant malgré les inconvénients citer ci-dessus.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="card">
-            <div class="imgBx">
-                <img src="image/img_discord.png" alt="Discord">
-            </div>
-            <div class="content">
-                <h2>Discord</h2>
-                <p>Ce logiciel de communication, nous permet
-                   de communiquer pendant nos heures de projet
-                   en créant un serveur pour faciliter le bien dans l'équipe</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="image/github-logo.png" alt="Github">
-            </div>
-            <div class="content">
-                <h2>Github</h2>
-                <p>GitHub permet aux développeurs de modifier, d’adapter et d’améliorer le logiciel gratuitement à partir de référentiels publics, mais facture les interventions pour les référentiels privés, selon trois formules de paiement</p>
+        <div tabindex="0" role="tabpanel" id="changement-tab" aria-labelledby="changement" class="is-hidden">
+            <div class="doc-card">
+                <div class="doc-card-content">
+                    <div class="imgBx">
+                        <img src="./image/changement.jpg" alt="changement">
+                    </div>
+                    <div class="content">
+                        <h2>Les changement à apporter</h2>
+                        <p>
+                            Concernant la répartition du travail l'ensemble des membres du groupe se sont investis et ont fourni la dose de travail
+                            sur ce point nous ne voyons pas de modification à faire.</br>
+                            Cependant, si on devait modifier quelque chose, cela aurait été l'ordre du traitement du cahier des charges.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="card">
-            <div class="imgBx">
-                <img src="image/VSCODE.png" alt="VsCode">
-            </div>
-            <div class="content">
-                <h2>VsCode</h2>
-                <p>Visual Studio Code est un éditeur de code open-source développé par Microsoft supportant un très grand nombre de langages grâce à des extensions. Il supporte l’autocomplétion, la coloration syntaxique, le débogage, et les commandes git.</p>
-            </div>
+    <div class="dashboard-section">
+        <div class="dashboard-section-block">
+          <!-- <h1><a href="">Alertes</a></h1> -->  
+          <h1>Alertes</h1>
+        </div>
+        <div class="dashboard-section-block">
+            <h1>Capteurs</h1>
+        </div>
+        <div class="dashboard-section-block">
+            <h1>Suivi de température</h1>
         </div>
     </div>
-    </div>
+    <script src="js/onglet.js"></script>
+    <script src="js/defilText.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        var chaine = "Accéder à toute la documentation :  présentation équipe, outils utilisés, les difficultés... ";
+        var nb_car = chaine.length; 
+        var tableau = chaine.split("");
+        texte = new Array;
+        var txt = '';
+        var nb_msg = nb_car - 1;
 
-    <div tabindex="0" role="tabpanel" id="difficulte-tab" aria-labelledby="difficulte" class="is-hidden">
-      <p>Tout le js pcq c'est dure</p>
-    </div>
-
-    <div tabindex="0" role="tabpanel" id="changement-tab" aria-labelledby="changement">
-      <p>Toute l'équipe surtout benjamin il est moche et il pue de fou</p>
-    </div>
-  </div>
-
-  <script>
-    'use strict';
-
-    (function () {
-      var tablist = document.querySelectorAll('[role="tablist"]')[0];
-      var tabs;
-      var panels;
-
-      generateArrays();
-
-      function generateArrays() {
-        tabs = document.querySelectorAll('[role="tab"]');
-        panels = document.querySelectorAll('[role="tabpanel"]');
-      }
-
-      // For easy reference
-      var keys = {
-        end: 35,
-        home: 36,
-        left: 37,
-        up: 38,
-        right: 39,
-        down: 40,
-        delete: 46,
-        enter: 13,
-        space: 32,
-      };
-
-      // Add or subtract depending on key pressed
-      var direction = {
-        37: -1,
-        38: -1,
-        39: 1,
-        40: 1,
-      };
-
-      // Bind listeners
-      for (var i = 0; i < tabs.length; ++i) {
-        addListeners(i);
-      }
-
-      function addListeners(index) {
-        tabs[index].addEventListener('click', clickEventListener);
-        tabs[index].addEventListener('keydown', keydownEventListener);
-        tabs[index].addEventListener('keyup', keyupEventListener);
-
-        // Build an array with all tabs (<button>s) in it
-        tabs[index].index = index;
-      }
-
-      // When a tab is clicked, activateTab is fired to activate it
-      function clickEventListener(event) {
-        var tab = event.target;
-        activateTab(tab, false);
-      }
-
-      // Handle keydown on tabs
-      function keydownEventListener(event) {
-        var key = event.keyCode;
-
-        switch (key) {
-          case keys.end:
-            event.preventDefault();
-            // Activate last tab
-            focusLastTab();
-            break;
-          case keys.home:
-            event.preventDefault();
-            // Activate first tab
-            focusFirstTab();
-            break;
-
-          // Up and down are in keydown
-          // because we need to prevent page scroll >:)
-          case keys.up:
-          case keys.down:
-            determineOrientation(event);
-            break;
-        }
-      }
-
-      // Handle keyup on tabs
-      function keyupEventListener(event) {
-        var key = event.keyCode;
-
-        switch (key) {
-          case keys.left:
-          case keys.right:
-            determineOrientation(event);
-            break;
-          case keys.delete:
-            determineDeletable(event);
-            break;
-          case keys.enter:
-          case keys.space:
-            activateTab(event.target);
-            break;
-        }
-      }
-
-      // When a tablist’s aria-orientation is set to vertical,
-      // only up and down arrow should function.
-      // In all other cases only left and right arrow function.
-      function determineOrientation(event) {
-        var key = event.keyCode;
-        var vertical = tablist.getAttribute('aria-orientation') == 'vertical';
-        var proceed = false;
-
-        if (vertical) {
-          if (key === keys.up || key === keys.down) {
-            event.preventDefault();
-            proceed = true;
-          }
-        } else {
-          if (key === keys.left || key === keys.right) {
-            proceed = true;
-          }
+        for (i=0; i<nb_car; i++) {
+            texte[i] = txt+tableau[i];
+            var txt = texte[i];
         }
 
-        if (proceed) {
-          switchTabOnArrowPress(event);
+        actual_texte = 0;
+        function changeMessage(){
+            document.getElementById("doc-title").innerHTML = texte[actual_texte];
+            actual_texte++;
+            if(actual_texte >= texte.length)
+            actual_texte = nb_msg;
         }
-      }
-
-      // Either focus the next, previous, first, or last tab
-      // depending on key pressed
-      function switchTabOnArrowPress(event) {
-        var pressed = event.keyCode;
-
-        if (direction[pressed]) {
-          var target = event.target;
-          if (target.index !== undefined) {
-            if (tabs[target.index + direction[pressed]]) {
-              tabs[target.index + direction[pressed]].focus();
-            } else if (pressed === keys.left || pressed === keys.up) {
-              focusLastTab();
-            } else if (pressed === keys.right || pressed == keys.down) {
-              focusFirstTab();
-            }
-          }
-        }
-      }
-
-      // Activates any given tab panel
-      function activateTab(tab, setFocus) {
-        setFocus = setFocus || true;
-        // Deactivate all other tabs
-        deactivateTabs();
-
-        // Remove tabindex attribute
-        tab.removeAttribute('tabindex');
-
-        // Set the tab as selected
-        tab.setAttribute('aria-selected', 'true');
-
-        // Get the value of aria-controls (which is an ID)
-        var controls = tab.getAttribute('aria-controls');
-
-        // Remove is-hidden class from tab panel to make it visible
-        document.getElementById(controls).classList.remove('is-hidden');
-
-        // Set focus when required
-        if (setFocus) {
-          tab.focus();
-        }
-      }
-
-      // Deactivate all tabs and tab panels
-      function deactivateTabs() {
-        for (var t = 0; t < tabs.length; t++) {
-          tabs[t].setAttribute('tabindex', '-1');
-          tabs[t].setAttribute('aria-selected', 'false');
-        }
-
-        for (var p = 0; p < panels.length; p++) {
-          panels[p].classList.add('is-hidden');
-        }
-      }
-
-      // Make a guess
-      function focusFirstTab() {
-        tabs[0].focus();
-      }
-
-      // Make a guess
-      function focusLastTab() {
-        tabs[tabs.length - 1].focus();
-      }
-
-      // Detect if a tab is deletable
-      function determineDeletable(event) {
-        var target = event.target;
-
-        if (target.getAttribute('data-deletable') !== null) {
-          // Delete target tab
-          deleteTab(event, target);
-
-          // Update arrays related to tabs widget
-          generateArrays();
-
-          // Activate the closest tab to the one that was just deleted
-          if (target.index - 1 < 0) {
-            activateTab(tabs[0]);
-          } else {
-            activateTab(tabs[target.index - 1]);
-          }
-        }
-      }
-
-      // Deletes a tab and its panel
-      function deleteTab(event) {
-        var target = event.target;
-        var panel = document.getElementById(target.getAttribute('aria-controls'));
-
-        target.parentElement.removeChild(target);
-        panel.parentElement.removeChild(panel);
-      }
-    })();
-  </script>
+        if(document.getElementById)
+            setInterval("changeMessage()",30) /* la vitesse de defilement (plus on a une valeur faible plus 
+        texte s'affiche rapidement) */
+    </script>
 </body>
 
 </html>
