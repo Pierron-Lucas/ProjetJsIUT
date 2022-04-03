@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__listlogo">
+                <svg viewBox="0 0 640 512" width="100" title="infinity">
+                    <path d="M471.1 96C405 96 353.3 137.3 320 174.6 286.7 
+                    137.3 235 96 168.9 96 75.8 96 0 167.8 0 256s75.8 160 168.9 
+                    160c66.1 0 117.8-41.3 151.1-78.6 33.3 37.3 85 78.6 151.1 78.6 
+                    93.1 0 168.9-71.8 168.9-160S564.2 96 471.1 96zM168.9 320c-40.2 
+                    0-72.9-28.7-72.9-64s32.7-64 72.9-64c38.2 0 73.4 36.1 94 64-20.4 
+                    27.6-55.9 64-94 64zm302.2 0c-38.2 0-73.4-36.1-94-64 20.4-27.6 
+                    55.9-64 94-64 40.2 0 72.9 28.7 72.9 64s-32.7 64-72.9 64z" />
+                </svg>
+            </li>
+
+            <li class="nav__listitem"><a href="index.html">Accueil</a></li>
+            <li class="nav__listitem"><a href="doc.html">Documentation</a></li>
+            <li class="nav__listitem"><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="dashboard-section abs">
+        <div class="dashboard-section-block">
+            <h1><a href="sensor.html">Capteurs</a></h1>
+        </div>
+        <div class="dashboard-section-block">
+            <h1><a href="temp.html">Suivi de température</a></h1>
+        </div>
+    </div>
+    
+    <div class="sensor-table">
+        <h1>Vos capteurs</h1>
+        <table class="tableau-capteur">
+            <tr>
+                <th>Nom capteur</th>
+                <th>type</th>
+                <th>Date</th>
+                <th>heure</th>
+                <th>Température</th>
+            </tr>
+            <tr id="int">
+                    <td class="td_Nom"></td>
+                    <td class="td_type"></td>
+                    <td class="td_date"></td>
+                    <td class="td_hour"></td>
+                    <td class="td_temperature"></td>
+            </tr>
+            <tr id="ext">
+                <td class="td_Nom2"></td>
+                <td class="td_type2"></td>
+                <td class="td_date2"></td>
+                <td class="td_hour2"></td>
+                <td class="td_temperature2"></td>
+            </tr>
+        </table>
+        <button id='notifications'> Notification</button>
+        <p id='minint'> </p>
+        <p id='maxint'> </p>
+        <p id='minext'> </p>
+        <p id='maxext'> </p>
+    </div>
+    
+      
+    <script>
+            var minCapInt = 0.00;
+            var maxCapInt = 0.00;
+            var minCapExt = 0.00;
+            var maxCapExt = 0.00;
+
+            function message(msg){
+                alert(msg);
+            }
+        var TempCapteurExterieur=0.00
+        var TempCapteurInterieur=0.00
+        var xhr = new XMLHttpRequest(); 
+        xhr.open('GET', 'http://hothothot.dog/api/capteurs/');
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4) {
+            var json = JSON.parse(xhr.responseText);
+            var date = new Date(json.capteurs[0].Timestamp*1000);
+            var currentdate = date.getDate()+"/" +date.getMonth()+"/"+date.getFullYear();
+            var datehour = date.getHours()+":" + date.getMinutes()+":"+date.getSeconds();
+            TempCapteurInterieur = parseFloat(json.capteurs[0].Valeur);
+            TempCapteurExterieur = parseFloat(json.capteurs[1].Valeur);
+
+            if(TempCapteurExterieur > 35){
+            message(" Hot Hot Hot !");
+            }
+            if (TempCapteurExterieur < 0){
+                message("Banquise en vue ! ");
+            }
+            if (TempCapteurInterieur > 22 && TempCapteurInterieur < 50){
+                message("Baissez le chauffage !");
+            }
+            if (TempCapteurInterieur > 50){
+                message("Appelez les pompiers ou arrêtez votre barbecue !");
+            }
+            
+            let clone_capteur_interieur = document.getElementById("int").cloneNode(true);
+                    clone_capteur_interieur.setAttribute("id", "");
+                    clone_capteur_interieur.querySelector(".td_Nom").innerText = json.capteurs[0].Nom
+                    clone_capteur_interieur.querySelector(".td_type").innerText = json.capteurs[0].type
+                    clone_capteur_interieur.querySelector(".td_date").innerText = currentdate;
+                    clone_capteur_interieur.querySelector(".td_hour").innerText = datehour;
+                    clone_capteur_interieur.querySelector(".td_temperature").innerText = json.capteurs[0].Valeur;
+                    let table_tbody1 = document.querySelector("table tbody");
+                    table_tbody1.insertBefore(clone_capteur_interieur,table_tbody1.querySelector("#int").nextSibling);
+            
+            let clone_capteur_exterieur = document.getElementById("ext").cloneNode(true);
+                    clone_capteur_exterieur.querySelector(".td_Nom2").innerText = json.capteurs[1].Nom
+                    clone_capteur_exterieur.querySelector(".td_type2").innerText = json.capteurs[1].type
+                    clone_capteur_exterieur.querySelector(".td_date2").innerText = currentdate;
+                    clone_capteur_exterieur.querySelector(".td_hour2").innerText = datehour;
+                    clone_capteur_exterieur.querySelector(".td_temperature2").innerText = json.capteurs[1].Valeur;
+                    clone_capteur_exterieur.style.display = "table-row";
+                    let table_tbody2 = document.querySelector("table tbody");
+                    table_tbody2.insertBefore(clone_capteur_exterieur,table_tbody2.querySelector("#ext").nextSibling);
+
+                    if (minCapInt < json.capteurs[0].Valeur){
+                    minCapInt = json.capteurs[0].Valeur;
+                    document.getElementById('minint').innerHTML ='Capteur Intérieur min :' +minCapInt;
+                    }
+
+                    if (maxCapInt > json.capteurs[0].Valeur){
+                        maxCapInt = json.capteur[0].Valeur
+                        document.getElementById('maxint').innerHTML = 'Capteur Intérieur max : ' + maxCapInt;
+                    }
+                    if (minCapExt < json.capteurs[1].Valeur){
+                        minCapExt = json.capteurs[1].Valeur;
+                        document.getElementById('minext').innerHTML = 'Capteur Extérieur min : ' + minCapExt;
+                    }
+
+                    if (maxCapExt > json.capteurs[1].Valeur){
+                        maxCapExt = json.capteur[1].Valeur
+                        document.getElementById('maxext').innerHTML = 'Capteur Extérieur max ' + maxCapExt;
+                    }
+          }
+
+                
+        };
+        xhr.send();
+      </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+        <script>
+   
+
+function getNotifications() {
+        var notifTitle = "Voici la température des capteurs ";
+        var notifBody = 'Température des capteurs : capteur intérieur : ' + TempCapteurInterieur + ' capteur extérieur : ' + TempCapteurExterieur +'.';
+        var options = {
+            body: notifBody,
+        }
+        var notif = new Notification(notifTitle, options);
+    }
+  
+    setTimeout(getNotifications, 30000);
+
+
+var button = document.getElementById("notifications");
+button.addEventListener('click', function (e) {
+    Notification.requestPermission().then(function (result) {
+        if (result === 'granted') {
+            getNotifications();
+        }
+    });
+});
+</script>
+<script defer src="scripts/main.js"></script>
+</body>
+
+</html>

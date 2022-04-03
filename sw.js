@@ -20,7 +20,7 @@ self.addEventListener('install', (e) => {
 
     e.waitUntil(
   
-      caches.open('my-custom-pwa').then((cache) => cache.addAll([
+      caches.open('pwa').then((cache) => cache.addAll([
   
           "index.html",
           
@@ -36,7 +36,23 @@ self.addEventListener('install', (e) => {
 
           "js/defilText.js",
 
-          "js/onglet.js"
+          "js/onglet.js",
+
+          "temp.html",
+
+          "sensor.html",
+
+          "css/style.css",
+
+          "presentation/berard.pdf",
+
+          "presentation/boudjaoui.pdf",
+
+          "presentation/calixte.pdf",
+
+          "presentation/pierron.pdf",
+
+          "presentation/ruiz.pdf",
   
           // ... ajouter les autres ressources à mettre en cache
   

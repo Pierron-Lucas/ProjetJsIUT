@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="manifest" href="manifest.webmanifest">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__listlogo">
+                <svg viewBox="0 0 640 512" width="100" title="infinity">
+                    <path d="M471.1 96C405 96 353.3 137.3 320 174.6 286.7 
+                    137.3 235 96 168.9 96 75.8 96 0 167.8 0 256s75.8 160 168.9 
+                    160c66.1 0 117.8-41.3 151.1-78.6 33.3 37.3 85 78.6 151.1 78.6 
+                    93.1 0 168.9-71.8 168.9-160S564.2 96 471.1 96zM168.9 320c-40.2 
+                    0-72.9-28.7-72.9-64s32.7-64 72.9-64c38.2 0 73.4 36.1 94 64-20.4 
+                    27.6-55.9 64-94 64zm302.2 0c-38.2 0-73.4-36.1-94-64 20.4-27.6 
+                    55.9-64 94-64 40.2 0 72.9 28.7 72.9 64s-32.7 64-72.9 64z" />
+                </svg>
+            </li>
+
+            <li class="nav__listitem"><a href="index.html">Accueil</a></li>
+            <li class="nav__listitem"><a href="doc.html">Documentation</a></li>
+            <li class="nav__listitem"><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="dashboard-section abs">
+        <div class="dashboard-section-block">
+            <h1><a href="sensor.html">Capteurs</a></h1>
+        </div>
+        <div class="dashboard-section-block">
+            <h1><a href="temp.html">Suivi de température</a></h1>
+        </div>
+    </div>   
+
+    <div class="tab-temp">
+        <canvas id="myChart"></canvas>
+        <input type="button" id="majButton"  value="Mise à jour">
+    </div>  
+
+    <script id="graph">
+        var yValues = localStorage.getItem('yValues')
+        if (!yValues){
+            yValues = [0,0,0,0,0,0,0,0,0,0,0,0]
+        }
+        else{
+            yValues = yValues.split(',')
+        }
+        var xValues = [0,1,2,3,4,5,6,7,8,9,10,11,12];
+    
+    
+      var graph = new Chart("myChart", {
+        type: "line",
+        data: {
+          labels: xValues,
+          datasets: [{
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "rgba(0,0,255,1.0)",
+            borderColor: "rgba(0,0,255,0.1)",
+            data: yValues
+          }]
+        },
+        options: {
+          legend: {display: false},
+          scales: {
+            yAxes: [{ticks: {min: -50, max:50}}],
+          }
+        }
+      });
+    </script>
+    
+    <script>
+      document.getElementById("majButton").addEventListener("click", function(){majTab(yValues)});
+    
+      function majTab(yValues){
+        newTemp = Math.floor((Math.random() * 100) + 1)/2;
+        yValues.shift()//remove first
+        yValues.push(newTemp)//add last
+        localStorage.setItem('yValues',yValues.toString());
+        graph.update();
+        console.log(yValues);
+      }
+    
+    </script>
+    
+    <script>
+      var timestamp = 1646985511000
+      var date = new Date(timestamp);
+      console.log(date.getTime())
+      console.log(date)
+    </script>
+
+
+</body>
+</html>
