@@ -54,87 +54,179 @@
     <p id='status'></p>
     <code id='datas'></code>
     <button id='notifications'> Notification</button>
-    
-    
-    <script> socket = new WebSocket("wss://ws.hothothot.dog:9502");
-               
-                function getSensors(){
-                socket.onmessage = function (event) {
-                var json = JSON.parse(event.data);
-                datas = document.getElementById("datas");
-                datas.innerHTML= event.data;
-                var date = new Date(json.capteurs[0].Timestamp*1000);
-                var currentdate = date.getDate()+"/" +date.getMonth()+"/"+date.getFullYear();
-                var datehour = date.getHours()+":" + date.getMinutes()+":"+date.getSeconds();
-                TempCapteurInterieur = parseFloat(json.capteurs[0].Valeur);
-                TempCapteurExterieur = parseFloat(json.capteurs[1].Valeur);
-                
-                let clone_capteur_interieur = document.getElementById("ligne_modele").cloneNode(true);
-						clone_capteur_interieur.setAttribute("id", "");
-                        clone_capteur_interieur.querySelector(".td_Nom").innerText = json.capteurs[0].Nom
-                        clone_capteur_interieur.querySelector(".td_type").innerText = json.capteurs[0].type
-						clone_capteur_interieur.querySelector(".td_date").innerText = currentdate;
-                        clone_capteur_interieur.querySelector(".td_hour").innerText = datehour;
-                        clone_capteur_interieur.querySelector(".td_temperature").innerText = json.capteurs[0].Valeur;
-                        clone_capteur_interieur.querySelector(".td_Nom2").innerText = json.capteurs[1].Nom
-                        clone_capteur_interieur.querySelector(".td_type2").innerText = json.capteurs[1].type
-						clone_capteur_interieur.querySelector(".td_date2").innerText = currentdate;
-                        clone_capteur_interieur.querySelector(".td_hour2").innerText = datehour;
-                        clone_capteur_interieur.querySelector(".td_temperature2").innerText = json.capteurs[1].Valeur;
-						clone_capteur_interieur.style.display = "table-row";
-						let table_tbody = document.querySelector("table tbody");
-                        table_tbody.insertBefore(clone_capteur_interieur,table_tbody.querySelector("#ligne_modele").nextSibling);
-                     
-                        
-                        
-                }
+    <p id='minint'> </p>
+    <p id='maxint'> </p>
+    <p id='minext'> </p>
+    <p id='maxext'> </p>
+
+    <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+        <script>
+            var minCapInt = 0.00;
+            var maxCapInt = 0.00;
+            var minCapExt = 0.00;
+            var maxCapExt = 0.00;
+
+            function message(msg){
+                alert(msg);
+            }
+
+         socket = new WebSocket("hothothot.dog/api/capteurs");
+         var TempCapteurExterieur=0.00
+         var TempCapteurInterieur=0.00 
+            function getSensors() {
+        socket.onmessage = function (event) {
+        var json = JSON.parse(event.data);
+        datas = document.getElementById("datas");
+        datas.innerHTML= event.data;
+        var date = new Date(json.capteurs[0].Timestamp*1000);
+        var currentdate = date.getDate()+"/" +date.getMonth()+"/"+date.getFullYear();
+        var datehour = date.getHours()+":" + date.getMinutes()+":"+date.getSeconds();
+        TempCapteurInterieur = parseFloat(json.capteurs[0].Valeur);
+        TempCapteurExterieur = parseFloat(json.capteurs[1].Valeur);
+        if(TempCapteurExterieur > 35){
+            message(" Hot Hot Hot !");
         }
-        socket.onopen = function (event) {
-            console.log("Connexion établie");
+        if (TempCapteurExterieur < 0){
+            message("Banquise en vue ! ");
+        }
+        if (TempCapteurInterieur > 22 && TempCapteurInterieur < 50){
+            message("Baissez le chauffage !");
+        }
+        if (TempCapteurInterieur > 50){
+            message("Appelez les pompiers ou arrêtez votre barbecue !");
+        }
+        let clone_capteur_interieur = document.getElementById("ligne_modele").cloneNode(true);
+                clone_capteur_interieur.setAttribute("id", "");
+                clone_capteur_interieur.querySelector(".td_Nom").innerText = json.capteurs[0].Nom
+                clone_capteur_interieur.querySelector(".td_type").innerText = json.capteurs[0].type
+                clone_capteur_interieur.querySelector(".td_date").innerText = currentdate;
+                clone_capteur_interieur.querySelector(".td_hour").innerText = datehour;
+                clone_capteur_interieur.querySelector(".td_temperature").innerText = json.capteurs[0].Valeur;
+                clone_capteur_interieur.querySelector(".td_Nom2").innerText = json.capteurs[1].Nom
+                clone_capteur_interieur.querySelector(".td_type2").innerText = json.capteurs[1].type
+                clone_capteur_interieur.querySelector(".td_date2").innerText = currentdate;
+                clone_capteur_interieur.querySelector(".td_hour2").innerText = datehour;
+                clone_capteur_interieur.querySelector(".td_temperature2").innerText = json.capteurs[1].Valeur;
+                clone_capteur_interieur.style.display = "table-row";
+                let table_tbody = document.querySelector("table tbody");
+                table_tbody.insertBefore(clone_capteur_interieur,table_tbody.querySelector("#ligne_modele").nextSibling);
 
-            //On indique sur notre page web que la connexion est établie
-            let label = document.getElementById("status");
-            label.innerHTML = "Connexion établie";
+                if (minCapInt < json.capteurs[0].Valeur){
+                    minCapInt = json.capteurs[0].Valeur;
+                    document.getElementById('minint').innerHTML ='min :' +minCapInt;
+                }
+                
+                if (maxCapInt > json.capteurs[0].Valeur){
+                    maxCapInt = json.capteur[0].Valeur
+                    document.getElementById('maxint').innerHTML = 'max : ' +maxCapInt;
+                }
+                if (minCapExt < json.capteurs[1].Valeur){
+                    minCapExt = json.capteurs[1].Valeur;
+                    document.getElementById('minext').innerHTML = 'min : ' + minCapExt;
+                }
+                
+                if (maxCapExt > json.capteurs[1].Valeur){
+                    maxCapExt = json.capteur[1].Valeur
+                    document.getElementById('maxext').innerHTML = 'max ' + maxCapExt;
+                }
 
-            //Envoi d'un message au serveur (obligatoire)
-            socket.send("coucou !");
-
-            // au retour...
-             getSensors();
-             
-                 
-             
                
 
+             
+                
+                
+        }
+    }
 
-            }
-           
-    
-        function getNotifications() {
-                var notifTitle = "voici la température des capteurs ";
-                var notifBody = 'Température des capteurs : capteur intérieur : ' + TempCapteurInterieur + ' capteur extérieur : ' + TempCapteurExterieur +'.';
-                var notifImg = '/assets/images/android-chrome-192x192.png';
-                var options = {
-                    body: notifBody,
-                    icon: notifImg
-                }
-                var notif = new Notification(notifTitle, options);
-            }
-          
-            setTimeout(getNotifications, 30000);
+socket.onopen = function (event) {
+    console.log("Connexion établie");
 
+    //On indique sur notre page web que la connexion est établie
+    let label = document.getElementById("status");
+    label.innerHTML = "Connexion établie";
+
+    //Envoi d'un message au serveur (obligatoire)
+    socket.send("coucou !");
+
+
+
+
+document.getElementById("majButton").addEventListener("click", function(){majTab(yValues)});
+
+    // au retour...
+     getSensors();
+      }
+   
+
+function getNotifications() {
+        var notifTitle = "Voici la température des capteurs ";
+        var notifBody = 'Température des capteurs : capteur intérieur : ' + TempCapteurInterieur + ' capteur extérieur : ' + TempCapteurExterieur +'.';
+        var notifImg = '/assets/images/android-chrome-192x192.png';
+        var options = {
+            body: notifBody,
+            icon: notifImg
+        }
+        var notif = new Notification(notifTitle, options);
+    }
+  
+    setTimeout(getNotifications, 30000);
+
+
+var button = document.getElementById("notifications");
+button.addEventListener('click', function (e) {
+    Notification.requestPermission().then(function (result) {
+        if (result === 'granted') {
+            getNotifications();
+        }
+    });
+});
+
+
+
+     var Temperaturecapint =[];
+     var Tempcapext=[];
+     Temperaturecapint.shift(TempCapteurInterieur);
+     Tempcapext.shift(TempCapteurExterieur);
+     Temperaturecapint.push(TempCapteurInterieur);
+     Tempcapext.push(TempCapteurExterieur);
+    var graph = new Chart("myChart", {
+        type: "line",
+        data: {
+            labels: Temperaturecapint[0],
+            datasets: [{
+                fill: false,
+                lineTension: 0,
+                backgroundColor: "rgba(0,0,255,1.0)",
+                borderColor: "rgba(0,0,255,0.1)",
+                data: TempCapteurExterieur
+            }]
+        },
+        options: {
+            legend: {display: false},
+            scales: {
+                yAxes: [{ticks: {min: -50, max:50}}],
+            }
+        }
+    });
+</script>
+<!--
+<input type="button" id="majButton"  value="Maj">
+<p id = "tableau"> <script> document.write(Tempcapext) </script> </p>/!\ afficher dans HTML -->
+
+
+
+   
         
-        var button = document.getElementById("notifications");
-        button.addEventListener('click', function (e) {
-            Notification.requestPermission().then(function (result) {
-                if (result === 'granted') {
-                    getNotifications();
-                }
-            });
-        });
+             
+
+    
+    
+    
         
  
-    </script>
+
 </body>
 
 </html>
