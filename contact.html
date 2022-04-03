@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -26,5 +33,22 @@
             <li class="nav__listitem">Contact</li>
         </ul>
     </nav>
+
+    <div class="container6">
+        <div class="contact-box">
+            <div class="left"></div>
+            <div class="right">
+                <h2>Contactez nous</h2>
+                <form action="contact.html" method="get">
+                    <input type="text" class="contact" placeholder="Votre nom et prénom" required>
+                    <input type="text" class="contact" placeholder="Votre mail" required>
+                    <input type="text" class="contact" placeholder="Votre numéro de téléphone" required>
+                    <textarea placeholder="Votre message" class="contact" required></textarea>
+                    <button class="btn6">Soumettre votre message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script defer src="scripts/main.js"></script>
 </body>
 </html>
